@@ -5,23 +5,20 @@ services:
     image: todofrontend
     depends_on:
       - todoback
-    # container_name: todofrontend
     ports:
       - 3000:3000
     environment:
-      REACT_APP_API_HOST: todobackend
+      REACT_APP_API_HOST: todoback
 
   todoback:
     image: todobackend
-    # container_name: todobackend
     ports:
       - 3001:3001
 
   todotests:
     image: todotests
     depends_on:
-      - todoback
       - todofront
-    # container_name: todotests
+      - todoback
     environment:
-      FRONT_HOST: todofrontend
+      FRONT_HOST: todofront
